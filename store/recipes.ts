@@ -1,0 +1,2 @@
+export const SCREENSHOTS=[{name:'01-json',format:'json',fixture:'json',action:'tree'},{name:'02-xml',format:'xml',fixture:'xml',action:'tree'},{name:'03-search',format:'json',fixture:'json',action:'search'},{name:'04-analysis',format:'xml',fixture:'xml',action:'analysis'},{name:'05-recovery',format:'json',fixture:'malformed',action:'error'}] as const;
+export const ASSET_SIZES={screenshot:{width:1280,height:800},small:{width:440,height:280},marquee:{width:1400,height:560}} as const;

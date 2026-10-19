@@ -1,0 +1,4 @@
+import {PRODUCT} from '../src/brand/product';
+export function createManifest(browser:string,version:string) {
+ return {manifest_version:3,name:PRODUCT.title,version,description:PRODUCT.description,permissions:['storage'],action:{default_popup:'popup.html',default_title:PRODUCT.name},icons:{16:'icons/icon-16.png',32:'icons/icon-32.png',48:'icons/icon-48.png',128:'icons/icon-128.png'},content_scripts:[{matches:['http://*/*','https://*/*'],js:['detector.js'],run_at:'document_idle',all_frames:false}],web_accessible_resources:[{resources:['viewer.html','viewer.js','document-worker.js'],matches:['http://*/*','https://*/*']}],content_security_policy:{extension_pages:"script-src 'self'; object-src 'none'; worker-src 'self';"},...(browser==='firefox'?{browser_specific_settings:{gecko:{id:'prism@arshadshah.com',strict_min_version:'140.0',data_collection_permissions:{required:['none']}}}}:{})};
+}

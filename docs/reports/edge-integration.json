@@ -1,0 +1,16 @@
+{
+  "browser": "edge",
+  "version": "154.0.4258.53",
+  "checkedAt": "2026-10-06T08:25:40.343Z",
+  "checks": [
+    "ordinary HTML untouched",
+    "native JSON, worker search, inspector, exact raw recovery, teardown",
+    "native XML namespaces and reconstructed fidelity",
+    "scalar JSON and plain-text data",
+    "SVG artwork untouched",
+    "malformed-source recovery",
+    "hostile text and unsafe links",
+    "large document virtualization and keyboard focus recycling",
+    "narrow desktop layout"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "prism",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.4.1",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "build": "node --import tsx tools/build.ts",
+    "test:build": "vitest run tests/build",
+    "test:browser": "node --import tsx tools/browser-tests.ts",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:stories": "vitest run tests/stories",
+    "layers": "node --import tsx tools/layers.ts",
+    "bench": "node --import tsx tools/bench.ts",
+    "brand:assets": "node --import tsx tools/brand-assets.ts",
+    "brand:check": "node --import tsx tools/brand-assets.ts --check",
+    "store:assets": "node --import tsx tools/store-assets.ts",
+    "verify-package": "node --import tsx tools/verify-package.ts",
+    "package": "node --import tsx tools/package.ts",
+    "release:prepare": "node --import tsx tools/release.ts",
+    "changeset:status": "changeset status",
+    "store:promos": "node --import tsx tools/promo-assets.ts",
+    "test:firefox": "node tools/firefox-tests.mjs",
+    "check:source": "node --import tsx tools/check-source.ts",
+    "check:browser": "node --import tsx tools/browser-quality.ts"
+  },
+  "dependencies": {
+    "preact": "10.29.8",
+    "saxes": "6.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3",
+    "tsx": "4.23.13",
+    "vitest": "4.1.11",
+    "jsdom": "30.0.1",
+    "playwright": "1.63.0",
+    "@types/node": "26.5.0",
+    "@types/chrome": "0.1.43",
+    "@biomejs/biome": "2.5.12",
+    "@changesets/cli": "3.0.2",
+    "storybook": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
+    "@storybook/addon-a11y": "10.6.0",
+    "axe-core": "4.13.0",
+    "yaml": "2.9.1"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "volta": {
+    "node": "24.15.0",
+    "pnpm": "10.4.1"
+  },
+  "description": "A local-first desktop JSON and XML browser extension.",
+  "license": "MIT",
+  "author": "Arshad Shah",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arshad-shah/prism.git"
+  },
+  "homepage": "https://github.com/arshad-shah/prism",
+  "bugs": {
+    "url": "https://github.com/arshad-shah/prism/issues"
+  },
+  "pnpm": {
+    "overrides": {
+      "brace-expansion@>=4.0.0 <5.0.12": "5.0.12",
+      "source-map-js@<1.2.2": "1.2.2"
+    }
+  }
+}
