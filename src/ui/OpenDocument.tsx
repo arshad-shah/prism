@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "preact/hooks";
 import type { Format } from "../contracts/document";
 import { Button } from "./Button";
+import { Select } from "./Select";
 export function OpenDocument({
   onOpen,
   onError,
@@ -34,14 +35,15 @@ export function OpenDocument({
         onInput={(e) => setInput(e.currentTarget.value)}
       />
       <div class="actions">
-        <select
-          aria-label="Document format"
+        <Select
+          label="Document format"
           value={format}
-          onChange={(e) => setFormat(e.currentTarget.value as Format)}
-        >
-          <option value="json">JSON</option>
-          <option value="xml">XML</option>
-        </select>
+          options={[
+            { value: "json", label: "JSON" },
+            { value: "xml", label: "XML" },
+          ]}
+          onChange={setFormat}
+        />
         <Button
           primary
           icon="folder"

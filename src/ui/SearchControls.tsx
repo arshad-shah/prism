@@ -2,6 +2,7 @@ import type { Format, SearchOptions } from "../contracts/document";
 import { SearchField } from "./SearchField";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
+import { Select } from "./Select";
 export function SearchControls({
   format,
   options,
@@ -43,33 +44,27 @@ export function SearchControls({
         />
       </div>
       <div class="search-options">
-        <label class="select-control">
-          <select
-            aria-label="Search field"
-            value={options.field}
-            onChange={(e) =>
-              onChange({
-                ...options,
-                field: e.currentTarget.value as SearchOptions["field"],
-              })
-            }
-          >
-            <option value="all">All fields</option>
-            <option value="name">
-              {format === "json" ? "Keys" : "Tags / attributes"}
-            </option>
-            {format === "xml" && (
-              <>
-                <option value="tag">Tags</option>
-                <option value="attribute-name">Attribute names</option>
-                <option value="attribute-value">Attribute values</option>
-              </>
-            )}
-            <option value="value">Values</option>
-            <option value="path">Paths</option>
-          </select>
-          <Icon name="chevronDown" />
-        </label>
+        <Select
+          label="Search field"
+          value={options.field}
+          options={[
+            { value: "all", label: "All fields" },
+            {
+              value: "name",
+              label: format === "json" ? "Keys" : "Tags / attributes",
+            },
+            ...(format === "xml"
+              ? ([
+                  { value: "tag", label: "Tags" },
+                  { value: "attribute-name", label: "Attribute names" },
+                  { value: "attribute-value", label: "Attribute values" },
+                ] as const)
+              : []),
+            { value: "value", label: "Values" },
+            { value: "path", label: "Paths" },
+          ]}
+          onChange={(field) => onChange({ ...options, field })}
+        />
         <Button
           icon="case"
           label="Case sensitive search"

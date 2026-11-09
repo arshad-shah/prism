@@ -18,6 +18,7 @@ export function Inspector({
   onAnalysis: (value: boolean) => void;
   onCopy: (text: string) => void;
 }) {
+  const container = node?.kind === "object" || node?.kind === "array";
   return (
     <aside class="inspector" aria-label="Document inspector">
       <div class="inspector-tabs">
@@ -37,7 +38,9 @@ export function Inspector({
           <h3>Full value</h3>
           <section aria-label="Selected full value">
             <pre class="value-detail">
-              {node.value ? (
+              {container ? (
+                `${node.children.length} ${node.children.length === 1 ? "item" : "items"}`
+              ) : node.value ? (
                 <ValueLink value={node.value} truncate={false} />
               ) : node.children.length ? (
                 `${node.children.length} children`
@@ -46,9 +49,11 @@ export function Inspector({
               )}
             </pre>
           </section>
-          <Button icon="copy" onClick={() => onCopy(node.value)}>
-            Copy value
-          </Button>
+          {!container && (
+            <Button icon="copy" onClick={() => onCopy(node.value)}>
+              Copy value
+            </Button>
+          )}
           <h3>Document path</h3>
           <code class="document-path">{path}</code>
           <Button icon="copy" onClick={() => onCopy(path)}>

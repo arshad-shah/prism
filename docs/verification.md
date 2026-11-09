@@ -27,6 +27,7 @@ Real-browser evidence, recorded 2026-10-06 on macOS arm64 (Apple M2 Pro) and not
 - The browser reports predate this document refresh. Rebuilt outputs should be rechecked in real browsers before a release candidate is tagged.
 - Firefox JSON takeover is deliberately unsupported; parity with Chromium-family browsers is not claimed for native JSON pages.
 - Review screenshots exist locally but no final human visual sign-off is recorded.
+- Hand-made controls (2026-11-09): the native `<select>`, `<details>`, `title` tooltips and the search cancel glyph were replaced with custom `Select`, `Disclosure`, `Button` tooltip and SVG clear control; tree kind markers are now SVG icons. This was checked only in Playwright's Chromium against Storybook (keyboard select, tree gutter alignment, tooltip). The built extension and the committed browser reports were not rerun, and the hidden native file input still opens the OS file picker.
 
 ## Release gates still open
 

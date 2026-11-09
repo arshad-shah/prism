@@ -14,6 +14,7 @@ import { Inspector } from "../ui/Inspector";
 import { OpenDocument } from "../ui/OpenDocument";
 import { ErrorNotice } from "../ui/ErrorNotice";
 import { RawView } from "../ui/RawView";
+import { Disclosure } from "../ui/Disclosure";
 export function Viewer({
   session,
   onCopy,
@@ -187,10 +188,11 @@ export function Viewer({
         </div>
       )}
       {state.model && state.model.warnings.length > 0 && (
-        <details class="source-note">
-          <summary>About the normalized tree</summary>
-          <p>{state.model.warnings.join(" ")}</p>
-        </details>
+        <div class="source-note">
+          <Disclosure summary="About the normalized tree">
+            <p>{state.model.warnings.join(" ")}</p>
+          </Disclosure>
+        </div>
       )}
       {state.status === "loading" && (
         <div class="notice" role="status">
@@ -209,7 +211,7 @@ export function Viewer({
           <section class="document" aria-label="Document canvas">
             {!raw && state.model && (
               <div class="document-navigation">
-                <code title={path}>{path || "Select a value to inspect"}</code>
+                <code>{path || "Select a value to inspect"}</code>
                 <div>
                   <Button
                     icon="collapse"
