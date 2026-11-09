@@ -27,3 +27,22 @@ export const LongValue = {
     node: { ...Selected.args.node, value: "Long value ".repeat(500) },
   },
 };
+export const Container = {
+  args: {
+    ...Selected.args,
+    node: {
+      ...Selected.args.node,
+      kind: "object",
+      name: "filter",
+      value: "{}",
+      children: [2, 3, 4],
+    },
+    path: '$[0]["filter"]',
+  },
+};
+export const Link = {
+  args: {
+    ...Selected.args,
+    node: { ...Selected.args.node, value: "https://example.com/docs" },
+  },
+};
